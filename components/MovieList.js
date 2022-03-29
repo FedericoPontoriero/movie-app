@@ -1,6 +1,8 @@
+import React from "react";
+
 const MovieList = () => {
 	return (
-		<div>
+		<React.Fragment>
 			<div className="col-lg-4 col-md-6 mb-4">
 				<div className="card h-100">
 					<a href="#">
@@ -162,7 +164,7 @@ const MovieList = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</React.Fragment>
 	);
 };
 
