@@ -32,7 +32,7 @@ export default function Home() {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-3">
-							<SideMenu />
+							<SideMenu appName={"Movie DB"} />
 						</div>
 
 						<div className="col-lg-9">
