@@ -8,8 +8,8 @@ import MovieList from "../components/MovieList";
 import Footer from "../components/Footer";
 import { getMovies } from "../actions/index";
 
-export default function Home() {
-	const [movies, setMovies] = useState([]);
+export default function Home(props) {
+	/* const [movies, setMovies] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -17,7 +17,7 @@ export default function Home() {
 			setMovies(resMovies);
 		};
 		fetchData();
-	}, []);
+	}, []); */
 	return (
 		<div>
 			<Head>
@@ -50,7 +50,7 @@ export default function Home() {
 							<Carousel />
 
 							<div className="row">
-								<MovieList movies={movies} />
+								<MovieList movies={props.movies} />
 							</div>
 						</div>
 					</div>
@@ -65,3 +65,10 @@ export default function Home() {
 		</div>
 	);
 }
+
+Home.getInitialProps = async () => {
+	const movies = await getMovies();
+	return {
+		movies,
+	};
+};
