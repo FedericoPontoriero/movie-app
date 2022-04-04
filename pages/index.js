@@ -6,6 +6,7 @@ import MovieList from "../components/MovieList";
 import { getMovies } from "../actions/index";
 
 export default function Home(props) {
+	const { images } = props;
 	// Client Side fetching
 	/* const [movies, setMovies] = useState([]);
 
@@ -26,7 +27,7 @@ export default function Home(props) {
 						</div>
 
 						<div className="col-lg-9">
-							<Carousel />
+							<Carousel images={images} />
 
 							<div className="row">
 								<MovieList movies={props.movies || []} />
@@ -41,7 +42,15 @@ export default function Home(props) {
 
 Home.getInitialProps = async () => {
 	const movies = await getMovies();
+	const images = movies.map((movie) => {
+		return {
+			id: `image-${movie.id}`,
+			url: movie.image,
+			name: movie.name,
+		};
+	});
 	return {
 		movies,
+		images,
 	};
 };
