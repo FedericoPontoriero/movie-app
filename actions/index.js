@@ -40,6 +40,21 @@ const MOVIE_DATA = [
 	},
 ];
 
+const CATEGORY_DATA = [
+	{ id: "1", name: "Drama" },
+	{ id: "2", name: "Action" },
+	{ id: "3", name: "Adventures" },
+	{ id: "4", name: "Historical" },
+];
+
+export const getCategories = () => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(CATEGORY_DATA);
+		}, 50);
+	});
+};
+
 export const getMovies = () => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {

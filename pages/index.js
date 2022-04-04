@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import SideMenu from "../components/SideMenu";
 import Carousel from "../components/Carousel";
 import MovieList from "../components/MovieList";
-import { getMovies } from "../actions/index";
+import { getMovies, getCategories } from "../actions/index";
 
 export default function Home(props) {
-	const { images } = props;
+	const { images, categories, movies } = props;
 	// Client Side fetching
 	/* const [movies, setMovies] = useState([]);
 
@@ -23,14 +23,14 @@ export default function Home(props) {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-3">
-							<SideMenu appName={"Movie DB"} />
+							<SideMenu appName={"Movie DB"} categories={categories} />
 						</div>
 
 						<div className="col-lg-9">
 							<Carousel images={images} />
 
 							<div className="row">
-								<MovieList movies={props.movies || []} />
+								<MovieList movies={movies || []} />
 							</div>
 						</div>
 					</div>
@@ -42,6 +42,7 @@ export default function Home(props) {
 
 Home.getInitialProps = async () => {
 	const movies = await getMovies();
+	const categories = await getCategories();
 	const images = movies.map((movie) => {
 		return {
 			id: `image-${movie.id}`,

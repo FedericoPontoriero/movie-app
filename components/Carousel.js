@@ -8,6 +8,7 @@ const Carousel = (props) => {
 			<ol className="carousel-indicators">
 				{images.map((image, index) => (
 					<li
+						key={image.id}
 						data-target="#carouselExampleIndicators"
 						data-slide-to={index}
 						className={index === 0 ? "active" : ""}></li>
@@ -16,6 +17,7 @@ const Carousel = (props) => {
 			<div className="carousel-inner" role="listbox">
 				{images.map((image, index) => (
 					<div
+						key={image.id}
 						className={`carousel-item active ${index === 0 ? "active" : ""}`}>
 						<img
 							className="d-block img-fluid"
@@ -41,6 +43,13 @@ const Carousel = (props) => {
 				<span className="carousel-control-next-icon" aria-hidden="true"></span>
 				<span className="sr-only">Next</span>
 			</a>
+			<style jsx>
+				{`
+					.carousel-item {
+						max-height: 400px;
+					}
+				`}
+			</style>
 		</div>
 	);
 };
