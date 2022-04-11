@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
 const MovieList = (props) => {
 	const movies = props.movies;
-	shorten = (text, maxLength) => {
+	const shorten = (text, maxLength) => {
 		if (text && text.length >= maxLength) {
 			return text.substr(0, maxLength) + "...";
 		}
@@ -15,7 +16,12 @@ const MovieList = (props) => {
 					<div className="card h-100">
 						<Link href="/movies/[id]" as={`/movies/${movie.id}`}>
 							<a>
-								<img className="card-ilmg-top" src={movie.image} alt="" />
+								<img
+									className="card-ilmg-top"
+									style={{ maxWidth: "400px" }}
+									src={movie.image}
+									alt=""
+								/>
 							</a>
 						</Link>
 						<div className="card-body">

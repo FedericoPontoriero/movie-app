@@ -53,5 +53,6 @@ Home.getInitialProps = async () => {
 	return {
 		movies,
 		images,
+		categories,
 	};
 };

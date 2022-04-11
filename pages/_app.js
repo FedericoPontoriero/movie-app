@@ -12,6 +12,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import "bootstrap/dist/css/bootstrap.css";
+import { useEffect } from "react";
 class MovieApp extends App {
 	static async getInitialProps(appContext) {
 		const appProps = await App.getInitialProps(appContext);
