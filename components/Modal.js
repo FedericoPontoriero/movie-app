@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import MovieCreateForm from './MovieCreateForm';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,9 +10,12 @@ const Modal1 = props => {
 	const [modal, setModal] = useState(false);
 
 	const toggle = () => setModal(!modal);
+
+	const router = useRouter();
+
 	const handleCreateMovie = movie => {
 		createMovie(movie).then(movies => {
-			console.log(JSON.stringify(movies));
+			router.push('/');
 		});
 	};
 	return (
