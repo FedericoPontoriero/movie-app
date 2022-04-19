@@ -13,6 +13,7 @@ const filePath = './data.json';
 const moviesData = require(filePath);
 
 app.prepare().then(() => {
+
 	const server = express();
 	server.use(bodyParser.json());
 
@@ -21,20 +22,16 @@ app.prepare().then(() => {
 		return res.json(moviesData);
 	});
 
-
 	server.get('/api/v1/movies/:id', (req, res) => {
 		const { id } = req.params;
 
 		const movie = moviesData.find(m => m.id === id)
 		return res.json(movie)
 	});
-
-	
 	
 	server.get('*', (req, res) => {
 		return handle(req, res);
 	});
-
 
 
 	server.post('/api/v1/movies', (req, res) => {
@@ -52,6 +49,25 @@ app.prepare().then(() => {
 			return res.json('Movie has been successfully added');
 		});
 	});
+
+	server.delete('/api/v1/movies/:id', (req, res) => { 
+		const { id } = req.params
+
+		const movieIndex = moviesData.findIndex(m => m.id === id)
+
+		moviesData.splice(movieIndex, 1)
+
+		const pathToFile = path.join(__dirname, filePath);
+		const stringifiedData = JSON.stringify(moviesData, null, 2);
+
+		fs.writeFile(pathToFile, stringifiedData, err => {
+			if (err) {
+				return res.status(422).send(err);
+			}
+
+			return res.json('Movie has been successfully deleted');
+		});
+	 })
 	const PORT = process.env.PORT || 3000;
 
 	server.use(handle).listen(PORT, err => {
