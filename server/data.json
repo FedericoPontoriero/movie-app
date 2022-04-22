@@ -34,12 +34,13 @@
   },
   {
     "name": "Some Moviesadasdas",
-    "description": "some descriptiona",
+    "description": "some descriptions",
     "rating": "4",
-    "image": "gdhdfghd",
+    "image": "gdhdfghdd",
     "longDesc": "",
     "genre": "",
     "id": "280",
-    "long description": "k"
+    "long description": "a",
+    "cover": "gdhdfghds"
   }
 ]
