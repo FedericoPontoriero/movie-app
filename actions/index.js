@@ -3,10 +3,11 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3000';
 
 const CATEGORY_DATA = [
-	{ id: '1', name: 'Drama' },
-	{ id: '2', name: 'Action' },
-	{ id: '3', name: 'Adventures' },
-	{ id: '4', name: 'Historical' },
+	{ id: 'c-0', name: 'All' },
+	{ id: 'c-1', name: 'Drama' },
+	{ id: 'c-2', name: 'Action' },
+	{ id: 'c-3', name: 'Adventure' },
+	{ id: 'c-4', name: 'Historical' },
 ];
 
 export const getCategories = () => {

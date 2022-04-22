@@ -7,13 +7,21 @@ import { getMovies, getCategories } from "../actions/index";
 
 export default function Home(props) {
 	const { images, categories, movies } = props;
-	const [filter, setFilter] = useState('')
+	const [filter, setFilter] = useState('All')
 
 	
 	const changeCategory = (category) => { 
 		setFilter(category)
 	 }
 
+	 const filterMovies = (movies) => { 
+		 if (filter === 'All') {
+			 return movies
+		 }
+		 return movies.filter((m) => { 
+			 return m.genre && m.genre.includes(filter)
+		  })
+	  }
 	// Client Side fetching
 	/* const [movies, setMovies] = useState([]);
 
@@ -38,7 +46,7 @@ export default function Home(props) {
 							<h1>Displaying {filter} movies</h1>
 
 							<div className="row">
-								<MovieList movies={movies || []} />
+								<MovieList movies={filterMovies(movies) || []} />
 							</div>
 						</div>
 					</div>
