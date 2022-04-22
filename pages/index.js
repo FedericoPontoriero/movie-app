@@ -7,6 +7,13 @@ import { getMovies, getCategories } from "../actions/index";
 
 export default function Home(props) {
 	const { images, categories, movies } = props;
+	const [filter, setFilter] = useState('')
+
+	
+	const changeCategory = (category) => { 
+		setFilter(category)
+	 }
+
 	// Client Side fetching
 	/* const [movies, setMovies] = useState([]);
 
@@ -23,11 +30,12 @@ export default function Home(props) {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-3">
-							<SideMenu appName={"Movie DB"} categories={categories} />
+							<SideMenu changeCategory={changeCategory} activeCategory={filter} appName={"Movie DB"} categories={categories} />
 						</div>
 
 						<div className="col-lg-9">
 							<Carousel images={images} />
+							<h1>Displaying {filter} movies</h1>
 
 							<div className="row">
 								<MovieList movies={movies || []} />

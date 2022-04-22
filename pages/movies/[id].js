@@ -13,6 +13,8 @@ const Movie = (props) => {
 			router.push('/')
 		 })
 	 }
+
+
 	return (
 		<div className="container">
 			<div className="jumbotron">
